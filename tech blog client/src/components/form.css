@@ -1,0 +1,29 @@
+.sign-or-log{
+    display: grid;
+    justify-content:  center;
+    
+}
+body{
+ justify-content: center;
+
+ 
+}
+#account-section{
+    width: 60rem;
+    
+    
+}
+
+#question{
+
+    display: flex;
+    flex-direction: row; 
+    
+
+}
+
+.sign-log-buttons{
+    width: 50%;
+   
+    
+}
