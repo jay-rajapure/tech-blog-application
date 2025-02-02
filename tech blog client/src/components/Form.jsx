@@ -1,13 +1,35 @@
 import React, { useState } from "react";
 import  './form.css'
 
+ async function submitForm(event) {
+  event.preventDefault()
+  console.log("attempting ")
+  const URL =  "http://localhost:3000/submit"
+  try {
+    let response = await fetch(URL,{
+
+      method:"POST",
+      headers:{"Content-Type":"application/JSON"},
+      body:JSON.stringify({
+        email:event.target.email.value,
+        password:event.target.password.value,
+
+      }
+      )
+    })
+    console.log(response)
+  } catch (error) {
+    console.log(error)
+  }
+}  
+
 function Signin({renderThis}){
 
     
       const  signin =  <>
        <div id="signInForm" className="sign-or-log">
       <h2>Sign In</h2>
-      <form>
+      <form onSubmit={submitForm}>
         <label for="email">Email:</label>
         <input type="email" id="email" name="email" placeholder="Enter your email" required />
         <br />
@@ -24,14 +46,14 @@ function Signin({renderThis}){
      const login = <>
           <div className="sign-or-log">
             <h2 id="login">Log In</h2>
-            <form action="localhost:3000">
+            <form >
               <label for="username">Username:</label>
               <input type="text" id="username" name="username" placeholder="Enter your username" required />
               <br />
               <label for="loginPassword">Password:</label>
               <input type="password" id="loginPassword" name="loginPassword" placeholder="Enter your password" required />
               <br />
-              <button type="submit">Log In</button>
+              <button  >Log In</button>
             </form>
             </div>
           </>
