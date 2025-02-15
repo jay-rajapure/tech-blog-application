@@ -4,7 +4,8 @@ import  './form.css'
  async function submitForm(event) {
   event.preventDefault()
   console.log("attempting ")
-  const URL =  "http://localhost:3000/submit"
+  const URL =  "/api"
+  console.log(event.target.email.value);
   try {
     let response = await fetch(URL,{
 
@@ -17,11 +18,13 @@ import  './form.css'
       }
       )
     })
-    console.log(response)
+    console.log( await response.text())
   } catch (error) {
     console.log(error)
   }
 }  
+
+
 
 function Signin({renderThis}){
 
@@ -76,7 +79,7 @@ function Form(){
                <div onClick={()=>{changeRender("signIn");  }} id="sign-button" className="sign-log-buttons"> Sigin</div>
                <div onClick={()=>{changeRender("LogIn")}}id="log-button" className="sign-log-buttons">  Login  </div> 
                </div>
-            
+              
 
             </form>
             <Signin renderThis={render}/>
